@@ -6,19 +6,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    //Debug
+    /*//Debug
     public TMP_Text debug_text;
-    
-    //Camera Variables
-    public Camera cam;
-    private Vector2 look_input = Vector2.zero;
-    private float look_speed = 60f;
-    private float horizontal_look_angle = 0f;
-    public bool invert_x = false;
-    public bool invert_y = false;
-    public int invert_factor_x = 1;
-    public int invert_factor_y = 1;
-    [Range(0.01f, 1f)] public float sensitivity;
 
     //Player Inputs
     private Vector2 move_input;
@@ -33,7 +22,18 @@ public class PlayerController : MonoBehaviour
     public float gravity = 15f;
     public float stop_speed = 0.5f;
     public float jump_impulse = 10f;
-    public float friction = 4f;
+    public float friction = 4f;*/
+
+    //Camera Variables
+    public Camera cam;
+    private Vector2 look_input = Vector2.zero;
+    private float look_speed = 60f;
+    private float horizontal_look_angle = 0f;
+    public bool invert_x = false;
+    public bool invert_y = false;
+    public int invert_factor_x = 1;
+    public int invert_factor_y = 1;
+    [Range(0.01f, 1f)] public float sensitivity;
 
     // Start is called before the first frame update
     void Start()
@@ -47,25 +47,25 @@ public class PlayerController : MonoBehaviour
         if (invert_y) invert_factor_y = -1;
 
         //Get reference to character controller component.
-        character_controller = GetComponent<CharacterController>();
+        //character_controller = GetComponent<CharacterController>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug
+        /*//Debug
         debug_text.text = "Wish Dir: " + wish_dir.ToString();
         debug_text.text += "\nVelocity: " + player_velocity.ToString();
         debug_text.text += "\nSpeed: " + new Vector3(player_velocity.x, 0, player_velocity.z).magnitude.ToString();
-        debug_text.text += "\nGrouned: " + grounded.ToString();
+        debug_text.text += "\nGrouned: " + grounded.ToString();*/
         
         Look();
     }
 
     private void FixedUpdate()
     {
-        //Find wish_dir.
+        /*//Find wish_dir.
         wish_dir = transform.right * move_input.x + transform.forward * move_input.y;
         wish_dir = wish_dir.normalized;
 
@@ -86,21 +86,21 @@ public class PlayerController : MonoBehaviour
         {
             player_velocity.y = -2;
         }
-        character_controller.Move(player_velocity * Time.deltaTime);
+        character_controller.Move(player_velocity * Time.deltaTime);*/
     }
 
     public void GetLookInput(InputAction.CallbackContext context)
     {
         look_input = context.ReadValue<Vector2>();
     }
-    public void GetMoveInput(InputAction.CallbackContext context)
+    /*public void GetMoveInput(InputAction.CallbackContext context)
     {
         move_input = context.ReadValue<Vector2>();
     }
     public void GetJumpInput(InputAction.CallbackContext context)
     {
         Jump();
-    }
+    }*/
 
     private void Look()
     {
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(horizontal_look_angle, 0, 0);
     }
 
-    public void Jump()
+    /*public void Jump()
     {
         if(grounded)
         {
@@ -164,5 +164,5 @@ public class PlayerController : MonoBehaviour
         new_velocity = new Vector3(new_velocity.x, current_velocity.y, new_velocity.z); //Add y component back in.
 
         return Accelerate(wish_dir, new_velocity, acceleration, max_speed);
-    }
+    }*/
 }
