@@ -24,7 +24,7 @@ public class PlayerGroundState : PlayerBaseState
     public override void UpdateState(PlayerStateMachine state_machine)
     {
         Debug.Log("Ground State Update");
-        state_machine.SwitchState(this, state_machine.air_state);
+        
     }
     public override void FixedUpdateState(PlayerStateMachine state_machine)
     {
