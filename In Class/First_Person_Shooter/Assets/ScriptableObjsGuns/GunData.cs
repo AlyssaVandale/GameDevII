@@ -11,4 +11,8 @@ public class GunData : ScriptableObject
     public int ammo_per_clip = 12;
 
     public bool automatic = false;
+
+    public float pfires_delay = 0.5f;
+
+    [Range(0f, 90f)] public float spread = 0.0f; //in degrees
 }
